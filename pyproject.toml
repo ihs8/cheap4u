@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "reseller-api"
+version = "1.0.0"
+description = "Typed client for the Reseller API"
+requires-python = ">=3.11"
+dependencies = [
+    "httpx>=0.27.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+reseller = "reseller_api.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["reseller_api*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
