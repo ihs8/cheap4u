@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{store_name}} Admin</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body class="login-body">
+  <main class="login-card">
+    <p class="eyebrow">Admin</p>
+    <h1>{{store_name}}</h1>
+    <p class="muted">Sign in to manage products, keys, prices, and orders.</p>
+    {{error}}
+    <form method="post" action="/login" class="stack">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button class="btn wide" type="submit">Sign in</button>
+    </form>
+  </main>
+</body>
+</html>

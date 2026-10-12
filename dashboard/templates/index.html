@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{store_name}} Admin</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow">Operations</p>
+      <h1>{{store_name}}</h1>
+    </div>
+    <form method="post" action="/logout">
+      <button class="btn ghost" type="submit">Sign out</button>
+    </form>
+  </header>
+  <main>
+    {{flash}}
+    {{api_error}}
+    <section class="metrics" aria-label="Store metrics">
+      <article>
+        <p class="muted">Wallet</p>
+        <p class="metric">{{balance}}</p>
+      </article>
+      <article>
+        <p class="muted">Products</p>
+        <p class="metric">{{product_count}}</p>
+      </article>
+      <article>
+        <p class="muted">Custom prices</p>
+        <p class="metric">{{custom_count}}</p>
+      </article>
+      <article>
+        <p class="muted">Paid / delivered</p>
+        <p class="metric">{{paid_count}} / {{delivered_count}}</p>
+      </article>
+    </section>
+    <section>
+      <div class="section-head">
+        <h2>Prices</h2>
+        <p class="muted">Shown to buyers in USD. Telegram charges ceil(USD x {{stars_per_usd}}) Stars.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Product</th>
+              <th>Wholesale</th>
+              <th>List</th>
+              <th>Selling</th>
+              <th>Stock</th>
+              <th>Set USD</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{product_rows}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section>
+      <div class="section-head">
+        <h2>Orders</h2>
+        <p class="muted">Latest shop checkouts from the Telegram bot.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Checkout</th>
+              <th>Product</th>
+              <th>Status</th>
+              <th>Paid</th>
+              <th>API order</th>
+              <th>Buyer</th>
+              <th>When</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{order_rows}}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

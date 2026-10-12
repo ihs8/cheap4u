@@ -104,6 +104,10 @@
 *.log
 **/logs/
 
+# Local bot data
+**/data/
+*.sqlite3
+
 # Environment and secrets
 **/.env
 **/.env.local
